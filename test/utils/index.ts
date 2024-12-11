@@ -1,6 +1,6 @@
 import { createServer } from 'vite'
-import type { PolyfillOptions } from 'vite-plugin-node-polyfills'
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import type { PolyfillOptions } from '../../src/index.js'
+import { nodePolyfills } from '../../src/index.js'
 
 /**
  * Format code by removing the smallest indentation from each line.

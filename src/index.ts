@@ -1,10 +1,18 @@
 import { createRequire } from 'node:module'
 import inject from '@rollup/plugin-inject'
 import stdLibBrowser from 'node-stdlib-browser'
-import { handleCircularDependancyWarning } from 'node-stdlib-browser/helpers/rollup/plugin'
+import {
+  handleCircularDependancyWarning,
+} from 'node-stdlib-browser/helpers/rollup/plugin'
 import esbuildPlugin from 'node-stdlib-browser/helpers/esbuild/plugin'
 import type { Plugin } from 'vite'
-import { compareModuleNames, isEnabled, isNodeProtocolImport, toRegExp, withoutNodeProtocol } from './utils'
+import {
+  compareModuleNames,
+  isEnabled,
+  isNodeProtocolImport,
+  toRegExp,
+  withoutNodeProtocol,
+} from './utils'
 
 export type BuildTarget = 'build' | 'dev'
 export type BooleanOrBuildTarget = boolean | BuildTarget
@@ -249,7 +257,8 @@ export const nodePolyfills = (options: PolyfillOptions = {}): Plugin => {
             ],
             plugins: [
               esbuildPlugin(polyfills),
-              // Supress the 'injected path "..." cannot be marked as external' error in Vite 4 (emitted by esbuild).
+              // Supress the 'injected path "..." cannot be marked as external'
+              //   error in Vite 4 (emitted by esbuild).
               // https://github.com/evanw/esbuild/blob/edede3c49ad6adddc6ea5b3c78c6ea7507e03020/internal/bundler/bundler.go#L1469
               {
                 name: 'vite-plugin-node-polyfills-shims-resolver',

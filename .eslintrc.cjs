@@ -2,6 +2,8 @@ module.exports = {
   extends: [
     'artisan',
   ],
+  rules: {
+  },
   overrides: [
     {
       files: [

@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-node-polyfills",
+  "name": "@substrate-system/vite-plugin-node-polyfills",
   "type": "module",
   "version": "0.22.0",
   "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394",
@@ -56,7 +56,6 @@
       "import": "./shims/process/dist/index.js"
     }
   },
-  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -88,10 +87,12 @@
     "typecheck:core": "tsc",
     "typecheck:react": "pnpm -C ./examples/react run typecheck",
     "typecheck:vanilla": "pnpm -C ./examples/vanilla run typecheck",
-    "typecheck:vue": "pnpm -C ./examples/vue run typecheck"
+    "typecheck:vue": "pnpm -C ./examples/vue run typecheck",
+    "preversion": "npm run lint",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "vite": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
+    "vite": "^6.0.3"
   },
   "dependencies": {
     "@rollup/plugin-inject": "^5.0.5",
@@ -99,32 +100,22 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.1",
+    "@substrate-system/vite-plugin-externalize-deps": "^0.8.0",
     "@types/node": "^18.18.8",
     "buffer": "6.0.3",
-    "esbuild": "^0.19.8",
+    "esbuild": "^0.24.0",
     "eslint": "^8.54.0",
     "eslint-config-artisan": "^0.2.1",
     "npm-run-all": "^4.1.5",
     "process": "^0.11.10",
-    "rollup": "^4.6.0",
-    "typescript": "4.8.3",
-    "vite": "^5.0.2",
+    "rollup": "^4.28.1",
+    "typescript": "5.7.2",
+    "vite": "^6.0.3",
     "vite-node": "^0.34.6",
-    "vite-plugin-externalize-deps": "^0.1.5",
-    "vite-plugin-inspect": "^0.7.42",
-    "vite-plugin-node-polyfills": "*",
-    "vitest": "^1.2.2"
+    "vite-plugin-inspect": "^0.10.3",
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "pnpm": {
-    "overrides": {
-      "buffer": "6.0.3",
-      "vite": "^5.0.2"
-    },
-    "patchedDependencies": {
-      "buffer@6.0.3": "patches/buffer@6.0.3.patch"
-    }
   }
 }

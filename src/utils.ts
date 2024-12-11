@@ -1,4 +1,8 @@
-import type { BooleanOrBuildTarget, ModuleName, ModuleNameWithoutNodePrefix } from './index'
+import type {
+  BooleanOrBuildTarget,
+  ModuleName,
+  ModuleNameWithoutNodePrefix,
+} from './index'
 
 export const compareModuleNames = (moduleA: ModuleName, moduleB: ModuleName) => {
   return withoutNodeProtocol(moduleA) === withoutNodeProtocol(moduleB)
